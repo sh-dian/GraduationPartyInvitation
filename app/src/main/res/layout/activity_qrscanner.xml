@@ -7,10 +7,13 @@
     android:orientation="vertical"
     tools:context=".QRScanner">
 
-    <EditText
-        android:id="@+id/qrCodeTxt"
+    <TextView
+        android:id="@+id/linkTextView"
         android:layout_width="match_parent"
         android:layout_height="85dp"
+        android:paddingTop="25dp"
+        android:textSize="25dp"
+        android:textAlignment="center"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.camera.view.PreviewView
