@@ -11,14 +11,26 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera.any"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.NFC" />
 
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-feature android:name="android.hardware.sensor.proximity" />
+    <uses-permission android:name="android.permission.PROXIMITY" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +42,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationPartyInvitation"
         tools:targetApi="31">
+        <activity
+            android:name=".Contact"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".FeedbackForm"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -42,7 +63,7 @@
             android:name=".QRScanner"
             android:exported="false" />
         <activity
-            android:name=".ViewReservation"
+            android:name=".DisplayReservation"
             android:exported="false" />
         <activity
             android:name=".HomePage"

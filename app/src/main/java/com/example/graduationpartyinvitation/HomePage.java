@@ -1,10 +1,8 @@
 package com.example.graduationpartyinvitation;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -21,7 +19,7 @@ import androidx.core.content.ContextCompat;
 
 public class HomePage extends AppCompatActivity {
 
-    ImageView mReserve, mQR, mLocation;
+    ImageView mReserve, mQR, mLocation, mFeedback, mCall;
     TextView calendarTextView,coordinatesTextView;
 
     private static final int PERMISSION_REQUEST_CODE = 123;
@@ -37,6 +35,8 @@ public class HomePage extends AppCompatActivity {
         mReserve = findViewById(R.id.reserveForm);
         mQR = findViewById(R.id.qr);
         mLocation = findViewById(R.id.location);
+        mFeedback = findViewById(R.id.feedback);
+        mCall = findViewById(R.id.contact);
         coordinatesTextView = findViewById(R.id.coordinatesTextView);
         calendarTextView = findViewById(R.id.calendarTextView);
 
@@ -55,6 +55,18 @@ public class HomePage extends AppCompatActivity {
         //map
         mLocation.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, Map.class);
+            startActivity(intent);
+        });
+
+        //feedback
+        mFeedback.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, FeedbackForm.class);
+            startActivity(intent);
+        });
+
+        //Contact
+        mCall.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Contact.class);
             startActivity(intent);
         });
 

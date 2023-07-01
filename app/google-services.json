@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "778571704954",
+    "project_id": "graduationpartyinvitatio-fde44",
+    "storage_bucket": "graduationpartyinvitatio-fde44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778571704954:android:27563ed38be9df642b29c3",
+        "android_client_info": {
+          "package_name": "com.example.graduationpartyinvitation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778571704954-58c60bm41lu67568gsl3bf01linkpafn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2r0BfBTX5NRj9DnYUobdidhQxXCTRZVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778571704954-58c60bm41lu67568gsl3bf01linkpafn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
