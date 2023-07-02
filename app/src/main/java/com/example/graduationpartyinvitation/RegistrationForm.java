@@ -50,7 +50,7 @@ public class RegistrationForm extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                         Toast.makeText(RegistrationForm.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(RegistrationForm.this, HomePage.class);
+                                        Intent intent = new Intent(RegistrationForm.this, LightSensor.class);
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(RegistrationForm.this, "Registration failed", Toast.LENGTH_SHORT).show();

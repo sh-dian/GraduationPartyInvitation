@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Login successful
                                     Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(MainActivity.this, HomePage.class);
+                                    Intent intent = new Intent(MainActivity.this, LightSensor.class);
                                     startActivity(intent);
                                 } else {
                                     // Login failed

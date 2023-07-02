@@ -1,11 +1,8 @@
 package com.example.graduationpartyinvitation;
 
 import android.annotation.SuppressLint;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,31 +50,30 @@ public class DisplayReservation extends AppCompatActivity {
                     ReserveForm reserve = snapshot.getValue(ReserveForm.class);
 
                     // Concatenate the retrieved data and set it to the TextViews
-                    editName.setText("Name: " + reserve.getName());
-                    editPhone.setText("Phone: " + reserve.getPhone());
-                    editNumberAdults.setText("Number of Adults: " + reserve.getNumberAdult());
-                    editNumberKid.setText("Number of Kids: " + reserve.getNumberKids());
-
-                    //delete data
-                    mCancelReserve.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            showConfirmationDialog(snapshot.getKey());
-                        }
-                    });
-
-                    mEditReserve.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            updateReservation();
-                        }
-                    });
+                    editName.setText(reserve.getName());
+                    editPhone.setText(reserve.getPhone());
+                    editNumberAdults.setText(reserve.getNumberAdult());
+                    editNumberKid.setText(reserve.getNumberKids());
+                    reserveId = snapshot.getKey();
                 }
             }
-
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                finish();
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(DisplayReservation.this, "Failed to load reservation.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mEditReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateReservation();
+            }
+        });
+
+        mCancelReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showConfirmationDialog(reserveId);
             }
         });
     }
@@ -85,14 +81,15 @@ public class DisplayReservation extends AppCompatActivity {
     private void updateReservation() {
         String name = editName.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
-        String numberAdults = editNumberAdults.getText().toString().trim();
+        String numberAdult = editNumberAdults.getText().toString().trim();
         String numberKids = editNumberKid.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone)) {
-            ReserveForm reserve = new ReserveForm(name, phone, numberAdults, numberKids);
-            dRef.child(reserveId).setValue(reserve);
-            Toast.makeText(DisplayReservation.this, "Reservation Update", Toast.LENGTH_SHORT).show();
-            finish();
+        if (!name.isEmpty() && !phone.isEmpty() && !numberAdult.isEmpty() && !numberKids.isEmpty()) {
+            ReserveForm updatedReserve = new ReserveForm(name, phone,numberAdult , numberKids);
+            dRef.child(reserveId).setValue(updatedReserve);
+            Toast.makeText(this, "Reservation updated successfully.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Please fill in all section", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -101,42 +98,27 @@ public class DisplayReservation extends AppCompatActivity {
         builder.setTitle("Confirmation");
         builder.setMessage("Do you want to CANCEL the reservation?");
         builder.setPositiveButton("Yes", (dialog, which) -> {
-            deleteRecord(reserveId);
+            deleteRecord();
             Toast.makeText(this, "Reservation Delete", Toast.LENGTH_SHORT).show();
-            clearViews();
         });
         builder.setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    private void clearViews() {
+    private void deleteRecord() {
+        dRef.child(reserveId).removeValue();
         editName.setText("");
         editPhone.setText("");
         editNumberAdults.setText("");
         editNumberKid.setText("");
-    }
-
-    private void deleteRecord(String reserveId) {
-        dRef.child(reserveId).removeValue();
-        showNotification("Record Deleted");
-    }
-
-    private void showNotification(String message) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "DeleteNotification";
-            String description = "Notification for record deletion";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-        Toast.makeText(this, "Reservation Canceled", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Reservation deleted successfully.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DisplayReservation.this, HomePage.class);
+        startActivity(intent);
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy(){
         super.onDestroy();
         dRef.removeEventListener(valueEventListener);
     }
