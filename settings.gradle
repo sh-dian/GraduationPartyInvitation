@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GraduationPartyInvitation"
 include ':app'
+include ':sdk'
+include ':opencv'
+include ':java'

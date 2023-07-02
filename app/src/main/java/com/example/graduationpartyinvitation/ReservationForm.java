@@ -60,7 +60,7 @@ public class ReservationForm extends AppCompatActivity {
             numberAdults.setText("");
             numberKid.setText("");
 
-            Intent intent = new Intent(ReservationForm.this,DisplayReservation.class);
+            Intent intent = new Intent(ReservationForm.this,FingerPrintSensor.class);
             Toast.makeText(this, "See you at the party!", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }

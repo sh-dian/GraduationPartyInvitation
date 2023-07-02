@@ -59,7 +59,7 @@
         android:id="@+id/viewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of Kids"
+        android:text="Password"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +108,7 @@
         app:layout_constraintVertical_bias="0.365" />
 
     <EditText
-        android:id="@+id/editAdultNumber"
+        android:id="@+id/editEmail"
         android:layout_width="285dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
