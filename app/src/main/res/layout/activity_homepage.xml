@@ -168,6 +168,7 @@
         android:layout_height="57dp"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:hint="GPS Sensor"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

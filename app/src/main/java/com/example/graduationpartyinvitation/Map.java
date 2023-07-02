@@ -1,17 +1,16 @@
 package com.example.graduationpartyinvitation;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import android.os.Bundle;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -42,7 +41,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         mMap.clear();
 
         // Animate the camera to the specified LatLng position and set the desired zoom level
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
 
         // Add the marker to the map
         mMap.addMarker(markerOptions);
