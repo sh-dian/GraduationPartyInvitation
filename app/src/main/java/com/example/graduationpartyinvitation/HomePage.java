@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 
 public class HomePage extends AppCompatActivity {
 
-    ImageView mReserve, mQR, mLocation, mFeedback, mCall;
+    ImageView mMenu, mQR, mLocation, mFeedback, mCall;
     TextView calendarTextView, coordinatesTextView;
 
     private static final int PERMISSION_REQUEST_CODE = 123;
@@ -34,7 +34,7 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        mReserve = findViewById(R.id.reserveForm);
+        mMenu = findViewById(R.id.menu);
         mQR = findViewById(R.id.qr);
         mLocation = findViewById(R.id.location);
         mFeedback = findViewById(R.id.feedback);
@@ -42,9 +42,9 @@ public class HomePage extends AppCompatActivity {
         coordinatesTextView = findViewById(R.id.coordinatesTextView);
         calendarTextView = findViewById(R.id.calendarTextView);
 
-        //reservation
-        mReserve.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, ReservationForm.class);
+        //menu
+        mMenu.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, MenuSelection.class);
             startActivity(intent);
         });
 

@@ -105,7 +105,6 @@ public class DisplayReservation extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
     private void deleteRecord() {
         dRef.child(reserveId).removeValue();
         editName.setText("");
