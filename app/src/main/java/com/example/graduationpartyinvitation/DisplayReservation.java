@@ -112,7 +112,7 @@ public class DisplayReservation extends AppCompatActivity {
         editNumberAdults.setText("");
         editNumberKid.setText("");
         Toast.makeText(this, "Reservation deleted successfully.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(DisplayReservation.this, HomePage.class);
+        Intent intent = new Intent(DisplayReservation.this, MenuSelection.class);
         startActivity(intent);
     }
 

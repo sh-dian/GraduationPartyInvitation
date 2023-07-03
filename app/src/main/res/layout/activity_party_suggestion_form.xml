@@ -27,6 +27,7 @@
         android:hint="Enter Description"
         android:inputType="textMultiLine"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textColorHint="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package com.example.graduationpartyinvitation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -81,6 +82,8 @@ public class DisplayWish extends AppCompatActivity {
         databaseReference.child(wishID).removeValue();
         wishText.setText("");
         Toast.makeText(this, "Sadly, people would like to read your wish", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DisplayWish.this, MenuSelection.class);
+        startActivity(intent);
     }
 
     @Override
